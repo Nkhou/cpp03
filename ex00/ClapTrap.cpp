@@ -2,20 +2,20 @@
 
 ClapTrap::ClapTrap()
 {
-    std::cout << "Default constracter called"<< std::endl;
+    std::cout << "Default Constructor called"<< std::endl;
 }
 ClapTrap::~ClapTrap()
 {
-    std::cout << "Deconstracter called"<< std::endl;
+    std::cout << "Destructor called"<< std::endl;
 }
 ClapTrap::ClapTrap(ClapTrap &clapTrap)
 {
-    std::cout << "Copy constracter called"<< std::endl;
+    std::cout << "Copy Constructor called"<< std::endl;
     *this = clapTrap;
 }
 ClapTrap::ClapTrap(std::string name)
 {
-    std::cout << "Constracter paramitrize called"<< std::endl;
+    std::cout << "Constructor called"<< std::endl;
     this->Name = name;
     this->HitPoints = 10;
     this->EnerguPoint = 10;
@@ -39,8 +39,11 @@ void ClapTrap::attack(const std::string& target)
 }
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    this->HitPoints -= amount;
-    std::cout << "ClapTrap " << this->Name << " take " << amount << " points of damage!" << std::endl;
+    if (this->HitPoints > 0 && this->EnerguPoint > 0)
+    {
+        this->HitPoints -= amount;
+        std::cout << "ClapTrap " << this->Name << " take " << amount << " points of damage!" << std::endl;
+    }
 }
 void ClapTrap::beRepaired(unsigned int amount)
 {
